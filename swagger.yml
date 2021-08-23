@@ -1,0 +1,162 @@
+# This file interfaces with Swagger to set the API parameters 
+
+swagger: "2.0"
+info:
+  description: Documentation for each API call
+  version: "1.0.0"
+  title: The Thing API Calls
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/api"
+
+# Paths supported by the server application
+paths:
+  /scenario:
+    get:
+      operationId: "scenario.read"
+      tags:
+        - "Scenario Cards"
+      summary: "Scenario Card to determine action for each round of play"
+      description: "Read a single card"
+      responses:
+        200:
+          description: "Successful card return operation"
+          schema:
+            type: "array"
+            items:
+              properties:
+                crew:
+                  type: "string"
+                directions:
+                  type: "string"
+  /character:
+    get:
+      operationId: "character.readList"
+      tags:
+        - "Character Cards"
+      summary: "Character card for players to choose their character"
+      description: "View all characters"
+      responses:
+        200:
+          description: "Successful list return operation"
+          schema:
+            type: "array"
+            items:
+              properties:
+                name:
+                  type: "string"
+                class:
+                  type: "string"
+                power:
+                  type: "string"
+  /tile{sector}:
+    get:
+      operationId: "tile.read"
+      tags:
+        - "Room Tiles"
+      summary: "Room tiles for laying out the game board"
+      description: "Get tiles for individual sectors"
+      parameters:
+        - name: sector
+          in: path
+          description: Sector of game board that developer wants to populate
+          type: integer
+          required: True
+      responses:
+        200:
+          description: "Successful list return operation"
+          schema:
+            type: "array"
+            items:
+              properties:
+                sector:
+                  type: "string"
+                item:
+                  type: "string"  
+  /bloodsample{players}:
+    get:
+      operationId: "bloodsample.read"
+      tags:
+        - "Blood Sample Cards"
+      summary: "Card to identify players as human or thing at the beginning of the game"
+      description: "Get a list of results for number of players"
+      parameters:
+        - name: players
+          in: path
+          description: Number of players
+          type: integer
+          required: True
+      responses:
+        200:
+          description: "Successful list return operation"
+          schema:
+            type: "array"
+            items:
+              properties:
+                value:
+                  type: "string"         
+  /supply:
+    get:
+      operationId: "supply.read"
+      tags:
+        - "Supply Cards"
+      summary: "Supply Card for players to draw"
+      description: "Read a single card"
+      responses:
+        200:
+          description: "Successful card return operation"
+          schema:
+            type: "array"
+            items:
+              properties:
+                name:
+                  type: "string"
+                dice:
+                  type: "string"
+  /supplyone:
+    get:
+      operationId: "supply.readOne"
+      tags:
+        - "Supply Cards"
+      summary: "Single supply card"
+      description: "Read a single card"
+      responses:
+        200:
+          description: "Successful card return operation"
+          schema:
+            type: "array"
+            items:
+              properties:
+                name:
+                  type: "string"
+                dice:
+                  type: "string"
+  /dice{number}:
+    get:
+      operationId: "dice.rolldice"
+      tags:
+        - "Dice"
+      summary: "Dice rolls for gameplay"
+      description: "Return results for rolling any number of six sided dice"
+      parameters:
+        - name: number
+          in: path
+          description: Number of dice to be rolled
+          type: integer
+          required: True
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            type: "array"
+            items:
+              properties:
+                number:
+                  type: "string"
+                total:
+                  type: "string"
+                
+                

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>The Thing: Infection at Outpost 31 API</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+</head>
+
+<body>
+
+    <header>
+        <nav id="primary_nav_wrap">
+            <ul>
+                <li class="current-menu-item"><a href="#">Home</a></li>
+                <li><a href="http://localhost:5000/api/ui/">Documentation</a></li>
+            </ul>
+        </nav>
+        <div class="clearfix"></div>
+    </header>
+    <div class="main">
+        <h2>
+            The Thing: Infection at Outpost 31 API
+        </h2>
+        <div>In the hidden identity game, The Thing: Infection at Outpost 31, players inhabit characters from John
+            Carpenter's sci-fi cult classic film in a race to discover who among the team has been infected by an alien
+            lifeform that can mimic anyone. Play as one of twelve characters as you lead a series of investigations through
+            the facility using supplies and equipment to clear the building. Infection at Outpost 31 is a large game best
+            played with many people. A digital version solves the problem of having to physically gather with a big group of
+            players. Creating the product would be a taller order for one developer, so I have published an API that
+            delivers all the needed variables and materials for gameplay. This way developers can focus on the front end of
+            their own version.
+        </div>
+    </div>
+    <div class="box" id="form">
+        <h1>Sign up for access</h1>
+        <form action="/" method="post">
+            <input type="text" name="username" id="username" placeholder="Username" required />
+            <br>
+            <input type="password" name="password" id="password" placeholder="Password" required />
+            <br>
+            <input type="submit" class="button" value="Send" />
+        </form>
+    </div>
+
+    {%if generated_key%}
+    <div class="box">
+        <h1>Your API Key</h2>
+            <h2>{{generated_key}}</h2>
+    </div>
+    <style>
+        #form {
+            display: none
+        }
+    </style>
+    {%endif%}
+
+</body>
+
+</html>
